@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  portmap-client:
+    image: dmotte/portmap-client
+    build: docker-build
+    restart: always
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./vols-portmap-client/known_hosts:/home/portmap/.ssh/known_hosts:ro
+      - ./vols-portmap-client/ssh_client_key:/home/portmap/.ssh/ssh_client_key:ro
+    environment:
+      - SSH_SERVER=10.0.2.15
+      - SSH_PORT=2222
+      - SSH_USERNAME=portmap
+      - REMOTE_PORT=8080
+      - LOCAL_HOSTNAME=webserver
+      - LOCAL_PORT=80
+  webserver:
+    image: nginx
+    restart: always
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./vols-webserver/www:/usr/share/nginx/html:ro
