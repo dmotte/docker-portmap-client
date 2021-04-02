@@ -2,7 +2,7 @@
 
 ![](portmap-client-icon-149.png)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client)](https://hub.docker.com/r/dmotte/portmap-client)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client.svg?logo=docker)](https://hub.docker.com/r/dmotte/portmap-client)
 
 This is a :whale: **Docker image** you can use to expose a **local TCP port** to the internet using an **SSH tunnel**.
 
