@@ -66,8 +66,8 @@ List of useful **Docker volumes** that can be mounted inside the container:
 
 Internal path     | Required | Description
 ----------------- | -------- | ---
-`/known_hosts`    | **Yes**  | File containing the SSH server's public fingerprint(s)
-`/ssh_client_key` | No       | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself
+`/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)
+`/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself
 
 ## Development
 
