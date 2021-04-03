@@ -5,7 +5,7 @@ RUN apk add --no-cache openssh-client
 
 # Copy the startup script
 COPY startup.sh /
-RUN chmod +x startup.sh
+RUN chmod +x /startup.sh
 
 # Create the portmap user
 RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash
