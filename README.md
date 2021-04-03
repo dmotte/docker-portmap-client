@@ -51,7 +51,20 @@ For a more complex example, please refer to the `docker-compose.yml` file.
 
 List of supported **environment variables**:
 
-TODO envvars list, all required except SSH_USERNAME=portmap, SSH_PORT=22
+Variable                | Required              | Description
+----------------------- | --------------------- | ---
+`SSH_SERVER`            | **Yes**               | SSH server to use for tunneling
+`SSH_PORT`              | No (default: 22)      | TCP port of the SSH server
+`SSH_USERNAME`          | No (default: portmap) | SSH username
+`REMOTE_PORT`           | **Yes**               | Remote TCP port on which to expose the local service
+`LOCAL_HOSTNAME`        | **Yes**               | Address where to find the local service to expose
+`LOCAL_PORT`            | **Yes**               | TCP port of the local service
+`KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client
+`DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking will be disabled
+
+## Volumes
+
+TODO
 
 ## Development
 
