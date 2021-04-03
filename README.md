@@ -77,7 +77,11 @@ If you want to contribute to this project, the first thing you have to do is to 
 git clone https://github.com/dmotte/docker-portmap-client.git
 ```
 
-Then just place your `ssh_client_key` and `known_hosts` files into the `vols-portmap-client` directory and run this command:
+Place your `ssh_client_key` and `known_hosts` files into the `vols-portmap-client` directory.
+
+Edit the `docker-compose.yml` file adapting its content to fit your scenario.
+
+Then you just have to run this command:
 
 ```bash
 docker-compose up --build
