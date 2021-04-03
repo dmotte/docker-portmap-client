@@ -45,7 +45,7 @@ TODO permissions issue. startup.sh as root, portmap copy and set perms. known_ho
 
 For a more complex example, please refer to the `docker-compose.yml` file.
 
-TODO screenshot
+![screen01](screen01.png)
 
 ### Environment variables
 
