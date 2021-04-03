@@ -8,8 +8,8 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - ./vols-portmap-client/known_hosts:/home/portmap/.ssh/known_hosts:ro
-      - ./vols-portmap-client/ssh_client_key:/home/portmap/.ssh/ssh_client_key:ro
+      - ./vols-portmap-client/known_hosts:/known_hosts:ro
+      - ./vols-portmap-client/ssh_client_key:/ssh_client_key:ro
     environment:
       - SSH_SERVER=10.0.2.15
       - SSH_PORT=2222

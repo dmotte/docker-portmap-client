@@ -18,10 +18,6 @@ For this section, we assume that you have already set up an SSH server for remot
 This Docker image only supports **SSH public key authentication**, so we assume that you have a :key: **private key file** (hereinafter called `ssh_client_key`) to log into the server. Please note:
 
 - The private key file must be **unencrypted**, as otherwise the SSH client would ask for the passphrase at startup
-- It must have **`600` permissions**. To achieve this:
-  ```bash
-  chmod 600 ssh_client_key
-  ```
 
 Then you'll need an SSH `known_hosts` file containing the **public fingerprint** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
 
@@ -29,12 +25,14 @@ Then you'll need an SSH `known_hosts` file containing the **public fingerprint**
 ssh-keyscan -p 2222 10.0.2.15 > "known_hosts"
 ```
 
-Suppose that you want to publicly expose a web service running locally in your LAN at `http://192.168.0.123:8080/`. You can start your portmap client:
+TODO or you can use strict=off, but better to not use it
+
+Suppose that you want to publicly expose a web service running locally in your LAN at `http://192.168.0.123:8080/`. You can start your portmap client TODO:
 
 ```bash
 docker run -it --rm \
-    -v $PWD/known_hosts:/home/portmap/.ssh/known_hosts:ro \
-    -v $PWD/ssh_client_key:/home/portmap/.ssh/ssh_client_key:ro \
+    -v $PWD/known_hosts:/known_hosts:ro \
+    -v $PWD/ssh_client_key:/ssh_client_key:ro \
     -e SSH_SERVER=TODO \
     -e SSH_USERNAME=TODO \
     -e REMOTE_PORT=TODO \
@@ -61,7 +59,7 @@ TODO envvars list, all required except SSH_USERNAME=portmap, SSH_PORT=22
 git clone https://github.com/dmotte/docker-portmap-client.git
 ```
 
-TODO place your `ssh_client_key` (with correct permissions) and `known_hosts` into the `vols-portmap-client` folder and:
+TODO place your `ssh_client_key` and `known_hosts` into the `vols-portmap-client` folder and:
 
 ```bash
 docker-compose up --build
