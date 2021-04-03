@@ -43,7 +43,7 @@ Example:
 
 ![screen01](screen01.png)
 
-For a more complex example, please refer to the `docker-compose.yml` file.
+For a more complex example, refer to the `docker-compose.yml` file.
 
 ### Environment variables
 
@@ -60,14 +60,14 @@ Variable                | Required              | Description
 `KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client
 `DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking (OpenSSH `StrictHostKeyChecking` option) will be disabled
 
-## Volumes
+### Volumes
 
-List of useful **Docker volumes** that can me mounted inside the container:
+List of useful **Docker volumes** that can be mounted inside the container:
 
 Internal path     | Required | Description
 ----------------- | -------- | ---
 `/known_hosts`    | **Yes**  | File containing the SSH server's public fingerprint(s)
-`/ssh_client_key` | No       | Unencrypted private key file that will be used by the OpenSSH client to authenticate
+`/ssh_client_key` | No       | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself
 
 ## Development
 
