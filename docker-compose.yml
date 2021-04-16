@@ -15,9 +15,7 @@ services:
       SSH_SERVER: 10.0.2.15
       SSH_PORT: 2222
       SSH_USERNAME: portmap
-      REMOTE_PORT: 8080
-      LOCAL_HOSTNAME: webserver
-      LOCAL_PORT: 80
+      FORWARDINGS: 8080:webserver:80,8081:google.it:80
   webserver:
     image: nginx
     restart: always

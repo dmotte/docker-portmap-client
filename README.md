@@ -33,9 +33,7 @@ docker run -it --rm \
     -v $PWD/ssh_client_key:/ssh_client_key:ro \
     -e SSH_SERVER=myuser-12345.portmap.io \
     -e SSH_USERNAME=myuser.mycfg \
-    -e REMOTE_PORT=12345 \
-    -e LOCAL_HOSTNAME=192.168.0.123 \
-    -e LOCAL_PORT=8080 \
+    -e FORWARDINGS=12345:192.168.0.123:8080 \
     dmotte/portmap-client
 ```
 
@@ -54,9 +52,7 @@ Variable                | Required              | Description
 `SSH_SERVER`            | **Yes**               | SSH server to use for tunneling
 `SSH_PORT`              | No (default: 22)      | TCP port of the SSH server
 `SSH_USERNAME`          | No (default: portmap) | SSH username
-`REMOTE_PORT`           | **Yes**               | Remote TCP port on which to expose the local service
-`LOCAL_HOSTNAME`        | **Yes**               | Address where to find the local service to expose
-`LOCAL_PORT`            | **Yes**               | TCP port of the local service
+`FORWARDINGS`           | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details)
 `KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client
 `DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking (OpenSSH `StrictHostKeyChecking` option) will be disabled
 
