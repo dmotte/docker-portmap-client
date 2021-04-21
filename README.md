@@ -80,7 +80,7 @@ Edit the `docker-compose.yml` file adapting its content to fit your scenario.
 Then you just have to run this command:
 
 ```bash
-docker-compose up --build
+docker-compose down && docker-compose up --build
 ```
 
 This will automatically **build the Docker image** using the `docker-build` directory as build context and then the **Docker-Compose stack** will be started.
