@@ -1,6 +1,6 @@
 # docker-portmap-client
 
-![](portmap-client-icon-149.png)
+![](icon-149.png)
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dmotte/docker-portmap-client/docker?logo=github&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client?logo=docker&style=flat-square)](https://hub.docker.com/r/dmotte/portmap-client)
@@ -49,23 +49,23 @@ For a more complex example, refer to the `docker-compose.yml` file.
 
 List of supported **environment variables**:
 
-Variable                | Required              | Description
------------------------ | --------------------- | ---
-`SSH_SERVER`            | **Yes**               | SSH server to use for tunneling
-`SSH_PORT`              | No (default: 22)      | TCP port of the SSH server
-`SSH_USERNAME`          | No (default: portmap) | SSH username
-`FORWARDINGS`           | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details)
-`KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client
-`DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking (OpenSSH `StrictHostKeyChecking` option) will be disabled
+| Variable                | Required              | Description                                                                                                                                                        |
+| ----------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `SSH_SERVER`            | **Yes**               | SSH server to use for tunneling                                                                                                                                    |
+| `SSH_PORT`              | No (default: 22)      | TCP port of the SSH server                                                                                                                                         |
+| `SSH_USERNAME`          | No (default: portmap) | SSH username                                                                                                                                                       |
+| `FORWARDINGS`           | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details) |
+| `KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client                                                                                                   |
+| `DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking (OpenSSH `StrictHostKeyChecking` option) will be disabled                                                               |
 
 ### Volumes
 
 List of useful **Docker volumes** that can be mounted inside the container:
 
-Internal path     | Required | Description
------------------ | -------- | ---
-`/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)
-`/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself
+| Internal path     | Required | Description                                                                                 |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------- |
+| `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                      |
+| `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself |
 
 ## Development
 
