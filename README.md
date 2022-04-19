@@ -2,16 +2,16 @@
 
 ![](icon-149.png)
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dmotte/docker-portmap-client/docker?logo=github&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dmotte/docker-portmap-client/release?logo=github&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client?logo=docker&style=flat-square)](https://hub.docker.com/r/dmotte/portmap-client)
 
 This is a :whale: **Docker image** you can use to expose **one or more TCP ports** to the internet using an **SSH tunnel**.
 
 It works by connecting to a (publicly exposed) SSH server; this can be for example an instance of the **[dmotte/portmap-server](https://github.com/dmotte/docker-portmap-server.git) image** or an online **SSH tunneling service** like [portmap.io](https://portmap.io/)
 
-> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the `.github/workflows/docker.yml` file. If you need an architecture which is currently unsupported, feel free to open an issue.
+> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the `.github/workflows/release.yml` file. If you need an architecture which is currently unsupported, feel free to open an issue.
 
-> :calendar: The build process of this Docker image is **triggered automatically every month** (thanks, [GitHub Actions](https://github.com/features/actions)! :smile:) to ensure that you get it with all the latest updated packages. See the [workflow file](.github/workflows/docker.yml) for further information.
+> :calendar: The build process of this Docker image is **triggered automatically every month** (thanks, [GitHub Actions](https://github.com/features/actions)! :smile:) to ensure that you get it with all the latest updated packages. See the [workflow file](.github/workflows/release.yml) for further information.
 
 ## Usage
 
