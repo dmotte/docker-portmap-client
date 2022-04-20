@@ -1,6 +1,6 @@
 # docker-portmap-client
 
-![](icon-149.png)
+![icon](icon-149.png)
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dmotte/docker-portmap-client/release?logo=github&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client?logo=docker&style=flat-square)](https://hub.docker.com/r/dmotte/portmap-client)
