@@ -9,4 +9,4 @@ This is a &#128051; **Docker image** you can use to expose **one or more TCP por
 
 Please refer to the [GitHub repository](https://github.com/dmotte/docker-portmap-client) for more information.
 
-![screen01](https://raw.githubusercontent.com/dmotte/docker-portmap-client/main/screen01.png)
+![Screenshot](https://raw.githubusercontent.com/dmotte/docker-portmap-client/main/screen-01.png)

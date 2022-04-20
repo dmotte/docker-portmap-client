@@ -41,7 +41,7 @@ docker run -it --rm \
 
 Example:
 
-![screen01](screen01.png)
+![Screenshot](screen-01.png)
 
 For a more complex example, refer to the `docker-compose.yml` file.
 
