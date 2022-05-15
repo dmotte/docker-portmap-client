@@ -4,8 +4,8 @@ name: shellcheck
 on:
   push:
     paths:
-      - docker-build/client.sh
-      - docker-build/startup.sh
+      - build/client.sh
+      - build/startup.sh
       - .github/workflows/shellcheck.yml
 
 jobs:
@@ -19,5 +19,5 @@ jobs:
         uses: essentialkaos/shellcheck-action@v1
         with:
           files: >-
-            docker-build/client.sh
-            docker-build/startup.sh
+            build/client.sh
+            build/startup.sh
