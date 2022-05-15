@@ -75,7 +75,7 @@ If you want to contribute to this project, the first thing you have to do is to 
 git clone https://github.com/dmotte/docker-portmap-client.git
 ```
 
-Place your `ssh_client_key` and `known_hosts` files into the `vols-portmap-client` directory.
+Place your `ssh_client_key` and `known_hosts` files into the `volumes/portmap-client` directory.
 
 Edit the `docker-compose.yml` file adapting its content to fit your scenario.
 
