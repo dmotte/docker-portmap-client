@@ -9,7 +9,7 @@ This is a :whale: **Docker image** you can use to expose **one or more TCP ports
 
 It works by connecting to a (publicly exposed) SSH server; this can be for example an instance of the **[dmotte/portmap-server](https://github.com/dmotte/docker-portmap-server.git) image** or an online **SSH tunneling service** like [portmap.io](https://portmap.io/)
 
-> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the `.github/workflows/release.yml` file. If you need an architecture which is currently unsupported, feel free to open an issue.
+> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the [`.github/workflows/release.yml`](.github/workflows/release.yml) file. If you need an architecture which is currently unsupported, feel free to open an issue.
 
 > :calendar: The build process of this Docker image is **triggered automatically every month** (thanks, [GitHub Actions](https://github.com/features/actions)! :smile:) to ensure that you get it with all the latest updated packages. See the [workflow file](.github/workflows/release.yml) for further information.
 
@@ -43,7 +43,7 @@ Example:
 
 ![Screenshot](screen-01.png)
 
-For a more complex example, refer to the `docker-compose.yml` file.
+For a more complex example, refer to the [`docker-compose.yml`](docker-compose.yml) file.
 
 ### Environment variables
 
@@ -77,7 +77,7 @@ git clone https://github.com/dmotte/docker-portmap-client.git
 
 Place your `ssh_client_key` and `known_hosts` files into the `volumes/portmap-client` directory.
 
-Edit the `docker-compose.yml` file adapting its content to fit your scenario.
+Edit the [`docker-compose.yml`](docker-compose.yml) file adapting its content to fit your scenario.
 
 Then you just have to run this command:
 
