@@ -11,8 +11,6 @@ It works by connecting to a (publicly exposed) SSH server; this can be for examp
 
 > :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the [`.github/workflows/release.yml`](.github/workflows/release.yml) file. If you need an architecture which is currently unsupported, feel free to open an issue.
 
-> :calendar: The build process of this Docker image is **triggered automatically every month** (thanks, [GitHub Actions](https://github.com/features/actions)! :smile:) to ensure that you get it with all the latest updated packages. See the [workflow file](.github/workflows/release.yml) for further information.
-
 ## Usage
 
 For this section, we assume that you have already set up an SSH server for remote port forwarding (such as [`dmotte/portmap-server`](https://hub.docker.com/r/dmotte/portmap-server)) or you use an online port forwarding service (such as [portmap.io](https://portmap.io/)).
@@ -69,32 +67,8 @@ List of useful **Docker volumes** that can be mounted inside the container:
 
 ## Development
 
-If you want to contribute to this project, the first thing you have to do is to **clone this repository** on your local machine:
-
-```bash
-git clone https://github.com/dmotte/docker-portmap-client.git
-```
-
-Place your `ssh_client_key` and `known_hosts` files into the `volumes/portmap-client` directory.
-
-Edit the [`docker-compose.yml`](docker-compose.yml) file adapting its content to fit your scenario.
-
-Then you just have to run this command:
+If you want to contribute to this project, you can use the following one-liner to **rebuild the image** and bring up the **Docker-Compose stack** every time you make a change to the code:
 
 ```bash
 docker-compose down && docker-compose up --build
-```
-
-This will automatically **build the Docker image** using the `build` directory as build context and then the **Docker-Compose stack** will be started.
-
-If you prefer to run the stack in daemon (detached) mode:
-
-```bash
-docker-compose up -d
-```
-
-In this case, you can view the logs using the `docker-compose logs` command:
-
-```bash
-docker-compose logs -ft
 ```
