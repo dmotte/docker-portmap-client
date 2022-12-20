@@ -16,6 +16,7 @@ services:
       SSH_PORT: 2222
       SSH_USERNAME: portmap
       FORWARDINGS: 8080:webserver:80,8081:google.it:80
+      ADDITIONAL_OPTIONS: -v
   webserver:
     image: nginx
     restart: always

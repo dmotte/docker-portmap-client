@@ -2,12 +2,6 @@
 
 set -ex
 
-# Set any additional options
-ADDITIONAL_OPTIONS=""
-if [ "$DO_NOT_CHECK_HOST_KEY" = "true" ]; then
-    ADDITIONAL_OPTIONS="-o StrictHostKeyChecking=no"
-fi
-
 # Process the FORWARDINGS list
 FWDS2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
 

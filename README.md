@@ -23,7 +23,7 @@ Then you'll need an SSH `known_hosts` file containing the **public fingerprint**
 ssh-keyscan -p 2222 10.0.2.15 > "known_hosts"
 ```
 
-> **Note**: if you want, you can bypass the known_hosts step by setting the `DO_NOT_CHECK_HOST_KEY` environment variable to `true` (see [below](#Environment-variables)), although it is **not advised** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
+> **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable content (see [below](#Environment-variables)), although it is **not advised** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
 
 Now suppose that you want to publicly expose (using portmap.io) a web service running locally in your LAN at `http://192.168.0.123:8080/`. You can start your portmap client container like this:
 
@@ -47,14 +47,14 @@ For a more complex example, refer to the [`docker-compose.yml`](docker-compose.y
 
 List of supported **environment variables**:
 
-| Variable                | Required              | Description                                                                                                                                                        |
-| ----------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SSH_SERVER`            | **Yes**               | SSH server to use for tunneling                                                                                                                                    |
-| `SSH_PORT`              | No (default: 22)      | TCP port of the SSH server                                                                                                                                         |
-| `SSH_USERNAME`          | No (default: portmap) | SSH username                                                                                                                                                       |
-| `FORWARDINGS`           | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details) |
-| `KEEPALIVE_INTERVAL`    | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client                                                                                                   |
-| `DO_NOT_CHECK_HOST_KEY` | No (default: false)   | If set to `true`, strict host key checking (OpenSSH `StrictHostKeyChecking` option) will be disabled                                                               |
+| Variable             | Required              | Description                                                                                                                                                        |
+| -------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `SSH_SERVER`         | **Yes**               | SSH server to use for tunneling                                                                                                                                    |
+| `SSH_PORT`           | No (default: 22)      | TCP port of the SSH server                                                                                                                                         |
+| `SSH_USERNAME`       | No (default: portmap) | SSH username                                                                                                                                                       |
+| `FORWARDINGS`        | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details) |
+| `KEEPALIVE_INTERVAL` | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client                                                                                                   |
+| `ADDITIONAL_OPTIONS` | No (default: none)    | Additional command-line options to pass to the `ssh` command                                                                                                       |
 
 ### Volumes
 
