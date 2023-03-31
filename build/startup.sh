@@ -22,4 +22,4 @@ if [ -f /known_hosts ]; then
 fi
 
 # Run the client.sh script as the portmap user
-su portmap -c /home/portmap/client.sh
+su portmap -c "/home/portmap/client.sh $*"

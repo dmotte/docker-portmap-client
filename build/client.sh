@@ -6,13 +6,14 @@ set -ex
 FWDS2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
 
 # Connect and open the tunnel
-# shellcheck disable=SC2086
+# shellcheck disable=SC2046,SC2086
 /usr/bin/ssh \
     -i ~/.ssh/ssh_client_key \
     -o ServerAliveInterval="$KEEPALIVE_INTERVAL" \
     -o ExitOnForwardFailure=yes \
     -p "$SSH_PORT" \
-    -N \
+    $(test $# -eq 0 && echo '-N') \
     -R $FWDS2 \
     $ADDITIONAL_OPTIONS \
-    "$SSH_USERNAME@$SSH_SERVER"
+    "$SSH_USERNAME@$SSH_SERVER" \
+    "$*"
