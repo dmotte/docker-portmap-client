@@ -4,8 +4,7 @@ FROM alpine
 RUN apk add --no-cache openssh-client
 
 # Copy the startup script
-COPY startup.sh /
-RUN chmod +x /startup.sh
+COPY --chown=root:root --chmod=755 startup.sh /
 
 # Create the portmap user
 RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash
@@ -16,8 +15,7 @@ WORKDIR /home/portmap
 
 RUN mkdir .ssh && chmod 700 .ssh
 
-COPY --chown=portmap client.sh .
-RUN chmod +x client.sh
+COPY --chown=portmap:portmap --chmod=755 client.sh .
 
 # Become the root user again and declare the entrypoint
 USER root
