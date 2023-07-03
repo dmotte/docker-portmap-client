@@ -3,7 +3,7 @@ version: "3"
 
 services:
   portmap-client:
-    image: dmotte/portmap-client
+    image: docker.io/dmotte/portmap-client:latest
     build: build
     restart: always
     volumes:
@@ -17,8 +17,9 @@ services:
       SSH_USERNAME: portmap
       FORWARDINGS: 8080:webserver:80,8081:google.it:80
       ADDITIONAL_OPTIONS: -v
+
   webserver:
-    image: nginx
+    image: docker.io/library/nginx:latest
     restart: always
     volumes:
       - /etc/timezone:/etc/timezone:ro
