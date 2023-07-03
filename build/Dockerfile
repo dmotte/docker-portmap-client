@@ -1,4 +1,5 @@
-FROM alpine
+# Tested with docker.io/library/alpine:3.18.2
+FROM docker.io/library/alpine:latest
 
 # Install required packages
 RUN apk add --no-cache openssh-client
