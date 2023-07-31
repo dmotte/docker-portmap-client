@@ -7,14 +7,10 @@ COPY --chown=root:root --chmod=755 startup.sh /
 
 RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash
 
-USER portmap
-WORKDIR /home/portmap
+RUN mkdir /home/portmap/.ssh && \
+    chown portmap:portmap /home/portmap/.ssh && \
+    chmod 700 /home/portmap/.ssh
 
-RUN mkdir .ssh && chmod 700 .ssh
-
-COPY --chown=portmap:portmap --chmod=755 client.sh .
-
-USER root
-WORKDIR /
+COPY --chown=portmap:portmap --chmod=755 client.sh /home/portmap
 
 ENTRYPOINT ["/startup.sh"]
