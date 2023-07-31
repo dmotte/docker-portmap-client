@@ -10,7 +10,7 @@ FWDS2="$(echo "$FORWARDINGS" | sed 's/,/ -R /g')"
     -o ServerAliveInterval="$KEEPALIVE_INTERVAL" \
     -o ExitOnForwardFailure=yes \
     -p "$SSH_PORT" \
-    $(test $# -eq 0 && echo '-N' || :) \
+    $(if [ $# -eq 0 ]; then echo '-N'; fi) \
     -R $FWDS2 \
     $ADDITIONAL_OPTIONS \
     "$SSH_USERNAME@$SSH_SERVER" \
