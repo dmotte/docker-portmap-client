@@ -2,14 +2,14 @@
 
 ![icon](icon-149.png)
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dmotte/docker-portmap-client/release.yml?branch=main&logo=github&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
+[![GitHub main workflow](https://img.shields.io/github/actions/workflow/status/dmotte/docker-portmap-client/main.yml?branch=main&logo=github&label=main&style=flat-square)](https://github.com/dmotte/docker-portmap-client/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dmotte/portmap-client?logo=docker&style=flat-square)](https://hub.docker.com/r/dmotte/portmap-client)
 
 This is a :whale: **Docker image** you can use to expose **one or more TCP ports** to the internet using an **SSH tunnel**.
 
 It works by connecting to a (publicly exposed) SSH server; this can be for example an instance of the **[dmotte/portmap-server](https://github.com/dmotte/docker-portmap-server.git) image**, or an online **SSH tunneling service** such as [portmap.io](https://portmap.io/) or [ngrok.com](https://ngrok.com/).
 
-> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the [`.github/workflows/release.yml`](.github/workflows/release.yml) file. If you need an architecture which is currently unsupported, feel free to open an issue.
+> :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the [`.github/workflows/main.yml`](.github/workflows/main.yml) file. If you need an architecture which is currently unsupported, feel free to open an issue.
 
 ## Usage
 
