@@ -2,7 +2,7 @@
 
 set -ex
 
-FWDS2="$(echo "$FORWARDINGS" | sed 's/,/ -R /g')"
+FWDS2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
 
 # shellcheck disable=SC2046,SC2086
 /usr/bin/ssh \
