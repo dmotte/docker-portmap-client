@@ -20,7 +20,7 @@ This Docker image only supports **SSH public key authentication**, so we assume 
 Then you'll need an SSH `known_hosts` file containing the **public fingerprint** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
 
 ```bash
-ssh-keyscan -p 2222 10.0.2.15 > "known_hosts"
+ssh-keyscan -p2222 10.0.2.15 > "known_hosts"
 ```
 
 > **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable content (see [below](#Environment-variables)), although it is **not advised** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
@@ -29,11 +29,11 @@ Now suppose that you want to publicly expose (using portmap.io) a web service ru
 
 ```bash
 docker run -it --rm \
-    -v $PWD/known_hosts:/known_hosts:ro \
-    -v $PWD/ssh_client_key:/ssh_client_key:ro \
-    -e SSH_SERVER=myuser-12345.portmap.io \
-    -e SSH_USERNAME=myuser.mycfg \
-    -e FORWARDINGS=12345:192.168.0.123:8080 \
+    -v "$PWD/known_hosts:/known_hosts:ro" \
+    -v "$PWD/ssh_client_key:/ssh_client_key:ro" \
+    -eSSH_SERVER=myuser-12345.portmap.io \
+    -eSSH_USERNAME=myuser.mycfg \
+    -eFORWARDINGS=12345:192.168.0.123:8080 \
     dmotte/portmap-client
 ```
 
