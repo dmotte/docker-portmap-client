@@ -2,7 +2,7 @@
 
 set -ex
 
-FWDS2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
+fwds2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
 
 # shellcheck disable=SC2046,SC2086
 /usr/bin/ssh \
@@ -11,7 +11,7 @@ FWDS2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
     -oExitOnForwardFailure=yes \
     -p"$SSH_PORT" \
     $(if [ $# = 0 ]; then echo '-N'; fi) \
-    -R $FWDS2 \
+    -R $fwds2 \
     $ADDITIONAL_OPTIONS \
     "$SSH_USERNAME@$SSH_SERVER" \
     "$*"
