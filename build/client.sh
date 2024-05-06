@@ -4,8 +4,10 @@ set -ex
 
 fwds2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
 
+# Start the OpenSSH client with "exec" to ensure it receives all the stop
+# signals correctly
 # shellcheck disable=SC2046,SC2086
-/usr/bin/ssh \
+exec /usr/bin/ssh \
     -i ~/.ssh/ssh_client_key \
     -oServerAliveInterval="$KEEPALIVE_INTERVAL" \
     -oExitOnForwardFailure=yes \
