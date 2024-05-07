@@ -9,13 +9,15 @@ This is a :whale: **Docker image** you can use to expose **one or more TCP ports
 
 It works by connecting to a (publicly exposed) SSH server; this can be for example an instance of the **[dmotte/portmap-server](https://github.com/dmotte/docker-portmap-server.git) image**, or an online **SSH tunneling service** such as [portmap.io](https://portmap.io/) or [ngrok.com](https://ngrok.com/).
 
+**Note**: this image runs as an **unprivileged user** (**non-root**).
+
 > :package: This image is also on **Docker Hub** as [`dmotte/portmap-client`](https://hub.docker.com/r/dmotte/portmap-client) and runs on **several architectures** (e.g. amd64, arm64, ...). To see the full list of supported platforms, please refer to the [`.github/workflows/main.yml`](.github/workflows/main.yml) file. If you need an architecture which is currently unsupported, feel free to open an issue.
 
 ## Usage
 
 For this section, we assume that you have already set up an SSH server for remote port forwarding (such as [`dmotte/portmap-server`](https://hub.docker.com/r/dmotte/portmap-server)) or you use an online port forwarding service.
 
-This Docker image only supports **SSH public key authentication**, so we assume that you have a :key: **private key file** (hereinafter called `ssh_client_key`) to log into the server. Please note that the private key file must be kept **unencrypted**, as otherwise the SSH client would ask for the passphrase at startup.
+This Docker image only supports **SSH public key authentication**, so we assume that you have a :key: **private key file** (hereinafter called `ssh_client_key`) to log into the server. Please note that the private key file must be kept **unencrypted**, as otherwise the SSH client would ask for the passphrase at startup. Plus, it must be readable by the `portmap` **unprivileged user** inside the container.
 
 Then you'll need an SSH `known_hosts` file containing the **public fingerprint** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
 
@@ -23,7 +25,7 @@ Then you'll need an SSH `known_hosts` file containing the **public fingerprint**
 ssh-keyscan -p2222 10.0.2.15 > known_hosts
 ```
 
-> **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable content (see [below](#Environment-variables)), although it is **not advised** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
+> **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable value (see [below](#Environment-variables)), but it's **highly discouraged** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
 
 Now suppose that you want to publicly expose (using portmap.io) a web service running locally in your LAN at `http://192.168.0.123:8080/`. You can start your portmap client container like this:
 
@@ -58,12 +60,10 @@ List of supported **environment variables**:
 
 ### Volumes
 
-List of useful **Docker volumes** that can be mounted inside the container:
-
-| Internal path     | Required | Description                                                                                 |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------- |
-| `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                      |
-| `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself |
+| Internal path     | Required | Description                                                                                                                                                 |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                                                                                      |
+| `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself. It must be readable by the `portmap` user inside the container |
 
 ## Development
 

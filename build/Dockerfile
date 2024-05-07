@@ -5,10 +5,9 @@ RUN apk add --no-cache openssh-client
 
 COPY --chown=root:root --chmod=755 startup.sh /
 
-RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash
+RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash && \
+    install -d -oportmap -gportmap -m700 /home/portmap/.ssh
 
-RUN install -d -oportmap -gportmap -m700 /home/portmap/.ssh
-
-COPY --chown=portmap:portmap --chmod=755 client.sh /home/portmap
+USER portmap
 
 ENTRYPOINT ["/startup.sh"]

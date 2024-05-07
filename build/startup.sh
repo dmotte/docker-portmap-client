@@ -2,11 +2,25 @@
 
 set -ex
 
-export SSH_USERNAME="${SSH_USERNAME:-portmap}"
-export SSH_PORT="${SSH_PORT:-22}"
-export KEEPALIVE_INTERVAL="${KEEPALIVE_INTERVAL:-30}"
+install -m600 /ssh_client_key ~portmap/.ssh
+install -m644 /known_hosts ~portmap/.ssh || :
 
-install -oportmap -gportmap -m600 /ssh_client_key ~portmap/.ssh
-install -oportmap -gportmap -m644 /known_hosts ~portmap/.ssh || :
+ssh_username=${SSH_USERNAME:-portmap}
+ssh_port=${SSH_PORT:-22}
+keepalive_interval=${KEEPALIVE_INTERVAL:-30}
 
-su portmap -c "~portmap/client.sh $*"
+fwds2=$(echo "$FORWARDINGS" | sed 's/,/ -R /g')
+
+# Start the OpenSSH client with "exec" to ensure it receives all the stop
+# signals correctly
+# shellcheck disable=SC2046,SC2086
+exec /usr/bin/ssh \
+    -i ~/.ssh/ssh_client_key \
+    -oServerAliveInterval="$keepalive_interval" \
+    -oExitOnForwardFailure=yes \
+    -p"$ssh_port" \
+    $(if [ $# = 0 ]; then echo '-N'; fi) \
+    -R $fwds2 \
+    $ADDITIONAL_OPTIONS \
+    "$ssh_username@$SSH_SERVER" \
+    "$*"
