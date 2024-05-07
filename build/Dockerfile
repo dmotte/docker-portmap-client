@@ -1,4 +1,4 @@
-# Tested with docker.io/library/alpine:3.18.2
+# Tested with docker.io/library/alpine:3.19.1
 FROM docker.io/library/alpine:latest
 
 RUN apk add --no-cache openssh-client
