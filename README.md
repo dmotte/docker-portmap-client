@@ -25,7 +25,7 @@ Then you'll need an SSH `known_hosts` file containing the **public fingerprint**
 ssh-keyscan -p2222 10.0.2.15 > known_hosts
 ```
 
-> **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable value (see [below](#Environment-variables)), but it's **highly discouraged** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
+> **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the SSH command, but it's **highly discouraged** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
 
 Now suppose that you want to publicly expose (using portmap.io) a web service running locally in your LAN at `http://192.168.0.123:8080/`. You can start your portmap client container like this:
 
@@ -33,15 +33,9 @@ Now suppose that you want to publicly expose (using portmap.io) a web service ru
 docker run -it --rm \
     -v "$PWD/known_hosts:/known_hosts:ro" \
     -v "$PWD/ssh_client_key:/ssh_client_key:ro" \
-    -eSSH_SERVER=myuser-12345.portmap.io \
-    -eSSH_USERNAME=myuser.mycfg \
-    -eFORWARDINGS=12345:192.168.0.123:8080 \
-    dmotte/portmap-client
+    dmotte/portmap-client \
+    myuser.mycfg@myuser-12345.portmap.io -NvR12345:192.168.0.123:8080
 ```
-
-Example:
-
-![Screenshot](screen-01.png)
 
 For a more complex example, refer to the [`docker-compose.yml`](docker-compose.yml) file.
 
@@ -49,14 +43,9 @@ For a more complex example, refer to the [`docker-compose.yml`](docker-compose.y
 
 List of supported **environment variables**:
 
-| Variable             | Required              | Description                                                                                                                                                        |
-| -------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SSH_SERVER`         | **Yes**               | SSH server to use for tunneling                                                                                                                                    |
-| `SSH_PORT`           | No (default: 22)      | TCP port of the SSH server                                                                                                                                         |
-| `SSH_USERNAME`       | No (default: portmap) | SSH username                                                                                                                                                       |
-| `FORWARDINGS`        | **Yes**               | Comma-separated (`,`) list of port forwardings, defined as `[bind_address:]port:host:hostport` (see [`man ssh`](https://linux.die.net/man/1/ssh) for more details) |
-| `KEEPALIVE_INTERVAL` | No (default: 30)      | Value for the `ServerAliveInterval` option of the OpenSSH client                                                                                                   |
-| `ADDITIONAL_OPTIONS` | No (default: none)    | Additional command-line options to pass to the `ssh` command                                                                                                       |
+| Variable             | Required         | Description                                                      |
+| -------------------- | ---------------- | ---------------------------------------------------------------- |
+| `KEEPALIVE_INTERVAL` | No (default: 30) | Value for the `ServerAliveInterval` option of the OpenSSH client |
 
 ### Volumes
 

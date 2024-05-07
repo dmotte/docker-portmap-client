@@ -8,5 +8,3 @@
 This is a **Docker image** you can use to expose **one or more TCP ports** to the internet using an **SSH tunnel**.
 
 Please refer to the [GitHub repository](https://github.com/dmotte/docker-portmap-client) for more information.
-
-![Screenshot](https://raw.githubusercontent.com/dmotte/docker-portmap-client/main/screen-01.png)
