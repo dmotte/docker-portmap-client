@@ -12,8 +12,8 @@ services:
       - ./volumes/portmap-client/known_hosts:/known_hosts:ro
       - ./volumes/portmap-client/ssh_client_key:/ssh_client_key:ro
     environment:
-      SSH_SERVER: 10.0.2.15
-      SSH_PORT: 2222
+      SSH_SERVER: "10.0.2.15"
+      SSH_PORT: "2222"
       SSH_USERNAME: portmap
       FORWARDINGS: 8080:webserver:80,8081:google.it:80
       ADDITIONAL_OPTIONS: -v

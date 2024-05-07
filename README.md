@@ -20,7 +20,7 @@ This Docker image only supports **SSH public key authentication**, so we assume 
 Then you'll need an SSH `known_hosts` file containing the **public fingerprint** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
 
 ```bash
-ssh-keyscan -p2222 10.0.2.15 > "known_hosts"
+ssh-keyscan -p2222 10.0.2.15 > known_hosts
 ```
 
 > **Note**: if you want, you can bypass the known_hosts step by adding `-o StrictHostKeyChecking=no` to the `ADDITIONAL_OPTIONS` environment variable content (see [below](#Environment-variables)), although it is **not advised** for security reasons. Please refer to the [OpenSSH client manual page](https://linux.die.net/man/1/ssh) for further information.
