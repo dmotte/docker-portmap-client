@@ -1,6 +1,6 @@
 ---
 services:
-  main:
+  portmap-client:
     image: docker.io/dmotte/portmap-client:latest
     build: build
     restart: always
