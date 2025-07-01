@@ -19,7 +19,7 @@ For this section, we assume that you have already set up an SSH server for remot
 
 This Docker image only supports **SSH public key authentication**, so we assume that you have a :key: **private key file** (hereinafter called `ssh_client_key`) to log in to the server. Please note that the private key file must be kept **unencrypted**, as otherwise the SSH client would ask for the passphrase at startup. Plus, it must be readable by the `portmap` **unprivileged user** inside the container.
 
-Then you'll need an SSH `known_hosts` file containing the **public fingerprint** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
+Then you'll need an SSH `known_hosts` file containing the **public key** of your server. To obtain it, you can use the following command (replace the server address and port with yours):
 
 ```bash
 ssh-keyscan -p2222 10.0.2.15 > known_hosts
@@ -43,16 +43,17 @@ For a more complex example, refer to the [`docker-compose.yml`](docker-compose.y
 
 List of supported **environment variables**:
 
-| Variable             | Required         | Description                                                      |
-| -------------------- | ---------------- | ---------------------------------------------------------------- |
-| `KEEPALIVE_INTERVAL` | No (default: 30) | Value for the `ServerAliveInterval` option of the OpenSSH client |
+| Variable             | Required         | Description                                                                                                                                             |
+| -------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `KEEPALIVE_INTERVAL` | No (default: 30) | Value for the **`ServerAliveInterval`** option of the OpenSSH client                                                                                    |
+| `AUTO_RESTART`       | No (default: -1) | If != -1, **automatically restart** the OpenSSH client after the given interval whenever it exits. Some examples: `.5`, `0.5s`, `30`, `30s`, `5m`, `1h` |
 
 ### Volumes
 
-| Type | Internal path     | Required | Description                                                                                                                                                 |
-| ---- | ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| File | `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                                                                                      |
-| File | `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself. It must be readable by the `portmap` user inside the container |
+| Type | Internal path     | Required | Description                                                                                                                                                     |
+| ---- | ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| File | `/known_hosts`    | No       | File containing the **SSH server's public key**(s)                                                                                                              |
+| File | `/ssh_client_key` | **Yes**  | **Unencrypted private key file** that will be used by the OpenSSH client to authenticate itself. It must be readable by the `portmap` user inside the container |
 
 ## Development
 
