@@ -49,10 +49,10 @@ List of supported **environment variables**:
 
 ### Volumes
 
-| Internal path     | Required | Description                                                                                                                                                 |
-| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                                                                                      |
-| `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself. It must be readable by the `portmap` user inside the container |
+| Type | Internal path     | Required | Description                                                                                                                                                 |
+| ---- | ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| File | `/known_hosts`    | No       | File containing the SSH server's public fingerprint(s)                                                                                                      |
+| File | `/ssh_client_key` | **Yes**  | Unencrypted private key file that will be used by the OpenSSH client to authenticate itself. It must be readable by the `portmap` user inside the container |
 
 ## Development
 
