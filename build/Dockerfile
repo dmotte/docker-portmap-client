@@ -10,4 +10,4 @@ RUN addgroup -S portmap && adduser -S portmap -G portmap -s /bin/ash && \
 
 USER portmap
 
-ENTRYPOINT ["/startup.sh"]
+ENTRYPOINT ["/bin/ash", "/startup.sh"]
