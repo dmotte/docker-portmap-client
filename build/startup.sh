@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -ex
+set -e
 
 keepalive_interval=${KEEPALIVE_INTERVAL:-30}
 auto_restart=${AUTO_RESTART:--1}
