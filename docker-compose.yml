@@ -5,8 +5,6 @@ services:
     build: build
     restart: always
     volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
       - ./volumes/portmap-client/known_hosts:/known_hosts:ro
       - ./volumes/portmap-client/ssh_client_key:/ssh_client_key:ro
     command: portmap@10.0.2.15 -p2222 -Nv -R8080:webserver:80 -R8081:google.com:80
@@ -15,6 +13,4 @@ services:
     image: docker.io/library/nginx:latest
     restart: always
     volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
       - ./volumes/webserver/www:/usr/share/nginx/html:ro
