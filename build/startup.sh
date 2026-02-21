@@ -7,8 +7,8 @@ auto_restart=${AUTO_RESTART:--1}
 
 ################################################################################
 
-install -m600 -t ~portmap/.ssh /ssh_client_key
-install -m644 -t ~portmap/.ssh /known_hosts || :
+install -vm600 -t ~portmap/.ssh /ssh_client_key
+install -vm644 -t ~portmap/.ssh /known_hosts || :
 
 if [ "$auto_restart" = -1 ]; then
     # Start the OpenSSH client with "exec" to ensure it receives all the stop
