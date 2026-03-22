@@ -3,32 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
 
     <title>Hello world</title>
 
     <link rel="icon" href="favicon.png" />
 
     <style type="text/css">
+      :root {
+        color-scheme: light dark;
+      }
+
       body,
       td,
       th {
         font-family: sans-serif;
       }
 
-      body {
-        background-color: #222;
-        color: #ccc;
-      }
-
-      .center {
-        margin: auto;
+      .text-center {
         text-align: center;
       }
     </style>
   </head>
 
   <body>
-    <div class="center">
+    <div class="text-center">
       <h1>Hello, World!</h1>
 
       <p><img src="docker-logo.png" /></p>
